@@ -5,6 +5,7 @@
 	margin-top: 100px;
 	background-color: #aaaaaa;
 	text-align: center;
+    position: relative;
 }
 
 #main-footer h2 {
@@ -25,4 +26,13 @@
 #main-footer .icon {
 	height: 45px;
 	padding-left: 10px;
+}
+
+@media all and (min-width: 1600px) {
+    #main-footer
+    {
+        margin-top: 300px;
+    }
+
+
 }

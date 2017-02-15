@@ -1,0 +1,172 @@
+
+.search_box
+{
+    margin-top:10px;
+    display:block;
+    width: auto;
+    height:auto;
+    position: relative;
+    text-align: center; 
+
+    border:1px solid #000;
+}
+
+.search_selection
+{
+    margin-top:10px;
+    display:block;
+    width: auto;
+    height:auto;
+    position: relative;
+    text-align: center; 
+
+    border:1px solid #000;
+}
+.search_result
+{
+    margin: 0 auto;
+    max-width:180px;
+    min-height:200px;
+    position:relative;
+    margin-top:20px;
+    margin-bottom:20px;
+    border:1px solid #4800ff;
+}
+
+
+.search_result img
+{
+    max-height:50%; 
+    max-width:50%;
+    position:relative;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+    text-align: center;
+}
+
+.price_search
+{
+    display:block;
+}
+
+
+@media all and (min-width: 768px) {
+    #left
+    {
+        float:left;
+        margin-left:15%;
+        border:1px solid #4cff00;
+    }
+    #right
+    {
+        margin-left:60%;
+
+    }
+    #middle
+    {
+        margin-left:60%;
+
+    }
+
+}
+
+
+@media all and (min-width: 1024px) {
+    .block_container
+    {
+        text-align:center;
+    }
+    .search_box
+    {
+        margin-left:30%;
+        max-width:50%;
+        margin-top:30px;
+    }
+    .search_selection
+    {
+        float:left;
+        max-width:20%;
+        margin-left: 5%;
+        height:500px;
+
+    }
+    #left
+    {
+        float:left;
+        margin-left:15%;
+        border:1px solid #4cff00;
+    }
+    #right
+    {
+        margin-left:60%;
+
+    }
+    #middle
+    {
+        margin-left:60%;
+
+    }
+}
+
+@media all and (min-width: 1600px) {
+    .block_container
+    {
+        text-align:center;
+    }
+
+    .search_box
+    {
+        margin-left:10%;
+        width:3000px;
+        max-width:50%;
+        margin-top:30px;
+        overflow: hidden;
+        text-align:unset;
+        display:inline-block;
+
+    }
+    .search_selection
+    {
+        float:left;
+        max-width:20%;
+        margin-left: 5%;
+        height:500px;
+
+    }
+    .search_result
+    {
+        margin: unset;
+        position:unset;
+        margin-top:unset;
+        margin-bottom:unset;
+        border:1px solid #4800ff;
+    }
+    #left
+    {
+        float:left;
+        margin-left:5%;
+        border:1px solid #4cff00;
+        margin-top: 30px;
+        position:relative;
+
+
+    }
+    #right
+    {
+        margin-top: 30px;
+        margin-left:70%;
+        margin-bottom: 30px;
+        position:relative;
+    }
+
+    #middle
+    {
+        float:left;
+        margin-top:-29%;
+        margin-left:38%;
+        position:relative;
+    }
+
+
+}
