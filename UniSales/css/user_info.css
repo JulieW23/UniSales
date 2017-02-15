@@ -1,5 +1,4 @@
-
-.search_box
+.search_selection
 {
     margin-top:10px;
     width: auto;
@@ -9,7 +8,7 @@
     border:1px solid #000;
 }
 
-.search_selection
+.comments
 {
     margin-top:10px;
     display:block;
@@ -17,12 +16,33 @@
     height:auto;
     position: relative;
     text-align: center; 
-
     border:1px solid #000;
 }
-.search_result
+
+.user_info
 {
-    font-size: 16px; /*reset font size*/
+    margin-top:10px;
+    display:block;
+    width: auto;
+    height:auto;
+    position: relative;
+    text-align: center; 
+    border:1px solid #000;
+}
+
+.user_info img
+{
+    margin-top: 10px;
+}
+
+.comment_and_send_message_button
+{
+    margin-bottom:10px;
+}
+
+
+.search_result {
+    font-size: 16px; 
     display: block;
     vertical-align: top;
     width: 100%;
@@ -38,7 +58,6 @@
     text-align: center;
 }
 
-
 .search_result img
 {
     max-height:50%; 
@@ -49,12 +68,6 @@
 	display: block;
     text-align: center;
 }
-
-.price_search
-{
-    display:block;
-}
-
 
 @media all and (min-width: 333px) {
     .search_result {
@@ -70,14 +83,25 @@
     }
     .search_selection
     {
-        width:30%;
+        width:25%;
         margin-left:2%;
         float: left;
         margin-right:3%;
     }
-    .search_box
+    .search_result
     {
-        width:60%;
+        margin-left: 10px;
+    }
+    .user_info
+    {
+        float: left;
+        width:30%;
+        margin-right:3%;
+
+    }
+    .comments
+    {
+        width:30%;
         float: left;
     }
 }
