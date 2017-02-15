@@ -1,17 +1,17 @@
-#main-header{
+#logged-in-header{
 	box-sizing: border-box;
 	background-color:#aaaaaa;
 	padding: 25px 40px;
 	height: 150px;
 }
 
-#main-header .header-container {
+#logged-in-header .header-container {
 	text-align: center;
 	margin: 0 auto;
 }
 
 /* Logo */
-#main-header .header-container h1{
+#logged-in-header .header-container h1{
 	float: none;
 	font-family: 'Sigmar One';
 	line-height: 40px;
@@ -19,7 +19,7 @@
 }
 
 /* Search bar */
-#main-header .header-container #search-bar{
+#logged-in-header .header-container #search-bar{
 	float: left;
 	width: 70%;
 	margin: 0;
@@ -29,70 +29,67 @@
 	padding: 8px 10px 8px 10px;
 }
 
-#main-header .header-container #search-button{
+#logged-in-header .header-container #search-button{
 	float: none;
 	height: 30px;
 	opacity:0.8;
 }
 
-#main-header .header-container #search-button:hover{
+#logged-in-header .header-container #search-button:hover{
 	opacity: 1;
 }
 
-/* Log in and sign up */
-#main-header .header-container a {
+/* Navigation buttons */
+#logged-in-header .header-container a {
 	color: #000000;
 	text-decoration: none;
 }
 
-#main-header .header-container ul {
+#logged-in-header .header-container ul {
 	font: 14px Arial;
 	list-style: none;
 	line-height: 1;
 	float: none;
 }
 
-#main-header .header-container ul li {
+#logged-in-header .header-container ul li {
 	display: inline-block;
 	margin-left: 15px;
 }
 
-#main-header .header-container ul li:hover{
-	opacity: 0.7;
+#logged-in-header .header-container ul li:hover{
+	opacity: 0.6;
 }
 
-#main-header .header-container ul li a {
-	font-weight: bold;
-	background-color: #ffffff;
-	padding: 10px 15px;
-	border-radius: 5px;
+#logged-in-header .header-container ul li a .material-icons {
+	font-size: 30px;
+	line-height: 10px;
 }
 
 /* Responsive header */
 @media all and (min-width: 768px) {
-	#main-header {
+	#logged-in-header {
 		padding: 20px 40px;
 		height: 80px;
 	}
 
-	#main-header .header-container h1 {
+	#logged-in-header .header-container h1 {
 		float: left;
 	}
 
-	#main-header .header-container #search-bar{
+	#logged-in-header .header-container #search-bar{
 		width: 170px;
 		margin: 0 5px 0 60px;
 	}
 
-	#main-header .header-container #search-button{
+	#logged-in-header .header-container #search-button{
 		float: left;
 	}
 
-	#main-header .header-container ul{
+	#logged-in-header .header-container ul{
 		float: right;
 	}
 }
-
 
 /* Get rid of edge white space */
 body {
