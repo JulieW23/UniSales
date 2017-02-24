@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>UniSales</title>
+    <link rel="stylesheet" href="css/ad_creation.css">
+</head>
+<body>
+    <div id="header"></div>
+
+    <div class="whole_container">
+        <section class="main_picture">
+            <h3> Main Picture </h3>
+            <div class="main_picture_holder">
+            </div>
+            <div class="main_url_in">
+                <input class="main_photo_url" type="text" placeholder="URL to main pic">
+                <button type="submit" class="main_pic_button">Post</button>
+            </div>
+        </section>
+
+        <section class="post_items">
+            <h3> Post New Item For Sale </h3>
+
+            <div class="basic_info">
+                <h3> Basic Info </h3>
+                <div class="basic_title">
+                    <h4 class="inline"> Title </h4>
+                    <input class="inline" type="text" placeholder="Title">
+                </div>
+                <div class="basic_category">
+                    <h4 class="inline"> Category </h4>
+                    <input class="inline" type="text" placeholder="Category">
+                </div>
+
+                <div class="basic_contactNumber">
+                    <h4 class="inline"> Contact Number </h4>
+                    <input class="inline" type="text" placeholder="Contact Number">
+                </div>
+
+                <div class="basic_contactEmail">
+                    <h4 class="inline"> Contact Email </h4>
+                    <input class="inline" type="text" placeholder="Contact Email">
+                </div>
+            </div>
+
+            <div class="Description">
+                <h3> Description </h3>
+                <div>
+                    <textarea class="textarea">
+                    </textarea>
+                </div>
+            </div>
+
+            <div class="more_pics">
+                <h3> Add More Pictures </h3>
+                <div class="sub_url_in">
+                    <input class="sub_photo_url" type="text" placeholder="URL to more pic">
+                    <button type="submit" class="sub_pic_button">Post</button>
+                </div>
+
+                <div class="more_sub_pictures">
+
+                </div>
+            </div>
+        </section>
+
+        <div class="button_wrapper">
+            <button type="submit" class="post_all">Post The Item</button>
+        </div>
+    </div>
+    <div id="footer"></div>
+    <!-- The Jquery scripts -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+            crossorigin="anonymous"></script>
+    <script src="jscript/ad_creation.js"></script>
+</body>
+</html>
+
