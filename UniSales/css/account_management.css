@@ -96,6 +96,8 @@
         width: 75%;
     }
 
+    .expand {display: none;}
+
     .wishlist{text-align: left;}
 
     .wishlist h2 {margin-left: 25px;}
