@@ -59,7 +59,7 @@ header h2 {
 	width: 130px;
 	margin-top: 10px;
 	background-color: #e5e5e5;
-	border-color: 2px solid #a7a7a7;
+	border: 2px solid #a7a7a7;
 	border-radius: 5px;
 }
 
@@ -76,4 +76,9 @@ header h2 {
 	header h2 {
 		font: 30px Arial;
 	}
+}
+
+body {
+	margin:0;
+	padding:0;
 }
