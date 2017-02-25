@@ -7,9 +7,27 @@
 
 .user_pic {width: 30%}
 
-.wishlist h2 {
-    clear: both;
-    margin-bottom: -5px;}
+button.expand {
+    background-color: #eee;
+    color: #444;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+}
+
+button.expand.active, button.expand:hover {
+    background-color: #ddd; 
+}
+
+div.panel {
+    padding: 0 18px;
+    display: none;
+    background-color: white;
+}
 
 .wishlist_item {
 	font-size: 16px;
@@ -44,10 +62,6 @@
     width: auto;
     text-align: center;
 }
-
-.listings h2 {
-    clear: both;
-    margin-bottom: -5px;}
 
 .listings_item {
 	font-size: 16px;
@@ -96,13 +110,11 @@
         width: 75%;
     }
 
-    .expand {display: none;}
-
     .wishlist{text-align: left;}
 
     .wishlist h2 {margin-left: 25px;}
 
-    .wishlist_item {width: 20%;}
+    .wishlist_item {width: 25%;}
 
     .wishlist i {
         display: inline-block;
@@ -114,7 +126,7 @@
 
     .listings h2 {margin-left: 25px;}
 
-    .listings_item {width: 20%;}
+    .listings_item {width: 25%;}
 
     .listings i{
         display: inline-block;
