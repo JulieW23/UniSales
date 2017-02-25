@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>UniSales</title>
+
+	<link rel="stylesheet" href="css/product_info.css">
+	<script src="jscript/product_info.js"></script>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+</head>
+
+<body>
+
+	<div id="header"></div>
+
+	<!-- Product picture section -->
+	<section class=pic_section>
+		<p id="Category">Category button</p>
+		<img class="product_pic" src="img/fake_item.png" alt="main product pic" /><br>
+	</section>
+
+	<div class="column">
+	<!-- Product description section -->
+	<section class="product_info">
+		<table><tr>
+		<td id="product_title">
+			<h2 class="product_title">Product Name</h2>
+			<p id="price">$XXX.yy</p>
+			<p>
+				Posted by: 
+				<a class="poster_link" href="#">Firstname LastName</a>
+			</p>
+		</td>
+
+		<td id="interest">
+			<p><a href="#">Contact Seller</a></p>
+			<p><a href="#">Add to Bookmark <img id="bookmark_star" src="img/star.png" alt="Add to Bookmark" /></a></p>
+		</td>
+		</tr></table>
+	</section>
+
+	<!-- Product description section -->
+	<section class="product_description">
+		<h3>Desctiption:</h3>
+		<p>
+			 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pharetra libero lacus. Phasellus placerat vel risus in mattis. Aenean aliquam, felis ut tempus pellentesque, tellus est molestie augue, vel convallis lectus massa non felis. Nullam elit est, vulputate at sapien et, finibus facilisis augue. Sed ornare massa ac cursus finibus. Morbi viverra massa tellus, eu ornare metus pellentesque scelerisque. Phasellus vel sagittis ligula. Aenean quis justo eget mi porttitor sollicitudin. Aenean luctus pulvinar enim non viverra. Morbi diam est, placerat consectetur laoreet at, pellentesque sit amet tellus. Mauris efficitur mauris turpis, non posuere justo vulputate sed. Pellentesque suscipit tempus nunc eu molestie. Proin justo ipsum, mattis sit amet fermentum nec, pulvinar sit amet ipsum. Fusce ligula ante, suscipit quis ipsum eu, condimentum lobortis leo. Ut dictum mauris ante, vel laoreet nulla pulvinar in.
+		</p>
+	</section>
+
+	<section class="comments">
+		<h3>Comments & Questions</h3>
+		<div class="user_comment">
+			<p class="comment_title">Wow so cool!</p>
+			<p class>
+				<a class="poster_link" href="#">Commenter One</a>
+				<span class="date">01/01/17</span>
+			</p>
+			<p class="comment">
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pharetra libero lacus. Phasellus placerat vel risus in mattis. Aenean aliquam, felis ut tempus pellentesque, tellus est molestie augue, vel convallis lectus massa non felis. Nullam elit est, vulputate at sapien et, finibus facilisis augue. Sed ornare massa ac cursus finibus. Morbi viverra massa tellus, eu ornare metus pellentesque scelerisque. Phasellus vel sagittis ligula. Aenean quis justo eget mi porttitor sollicitudin.
+			</p>
+		</div>
+		<div class="user_comment">
+			<p class="comment_title">Wow so cool!</p>
+			<p class>
+				<a class="poster_link" href="#">Commenter Two</a>
+				<span class="date">01/01/17</span>
+			</p>
+			<p class="comment">
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pharetra libero lacus. Phasellus placerat vel risus in mattis. Aenean aliquam, felis ut tempus pellentesque, tellus est molestie augue, vel convallis lectus massa non felis. Nullam elit est, vulputate at sapien et, finibus facilisis augue. Sed ornare massa ac cursus finibus. Morbi viverra massa tellus, eu ornare metus pellentesque scelerisque. Phasellus vel sagittis ligula. Aenean quis justo eget mi porttitor sollicitudin.
+			</p>
+		</div>
+	</section>
+
+	</div>
+
+	<div id="footer"></div>
+
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+        crossorigin="anonymous"></script>
+    <script> 
+        $(function(){
+            $("#header").load("header.html"); 
+            $("#footer").load("footer.html"); 
+        });
+    </script> 
+
+</body>
+</html>
