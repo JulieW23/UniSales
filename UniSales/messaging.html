@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
     
@@ -11,77 +12,41 @@
 	<link href="https://fonts.googleapis.com/css?family=Sigmar+One" rel="stylesheet">
 
 </head>
-<br>
-<br>
+
 <body>
-<header id="main-header">
-	<div class="header-container">
-		
-		<!-- Logo -->
-		<h1>Uni$ales</h1>
-		
-	
-		<form>
-			<input type="text" id="search-bar" name="search" placeholder="Search...">
-			<input type="image" id="search-button" src="img/search.png" title="Search">
-		</form>
-		
-
-		<ul>
-			<li><a href="#">Home</a></li>
-		</ul>
-
-	</div>
-</header>
+		<div id="header"></div>
 	    
-		<div class = "friend">
-			<img src="pic_mountain.jpg" alt="Mountain View" class = "profilepic big" >
+		<div class = "friend big">
+		    <p class = "aname"> Amy </p>
+			<img src="img/Amy.jpg" alt="Mountain View" class = "profilepic big" >
 			<div class = "chat">chat history.</div>
 		   <textarea rows = "8" cols = "30" class = "msg">Write your message here.</textarea>
-		   <input type = "submit" name = "submit" value = "submit">
-		   
+		   <input type = "submit" name = "submit" value = "message">   
 		</div>
 	
-		<div class = "friend">
-			<img src="pic_mountain.jpg" alt="Mountain View" class = "profilepic big">
+		<div class = "friend big">
+			<p class = "aname"> Bob </p>
+			<img src="img/Bob.jpg" alt="Mountain View" class = "profilepic big">
 			<div class = "chat">chat history.</div>
 		   <textarea rows = "8" cols = "30" class = "msg">Write your message here.</textarea>
-		   <input type = "submit" name = "submit" value = "submit">
-		   
+		   <input type = "submit" name = "submit" value = "message">  
 		</div>
 		
-		<div class = "friend">
-			<img src="pic_mountain.jpg" alt="Mountain View" class = "profilepic big">
+		<div class = "friend big">
+			<p class = "aname"> Cathy </p>
+			<img src="img/Cathy.jpg" alt="Mountain View" class = "profilepic big">
 			<div class = "chat">chat history.</div>
 		   <textarea rows = "8" cols = "30" class = "msg">Write your message here.</textarea>
-		   <input type = "submit" name = "submit" value = "submit">
-		   
+		   <input type = "submit" name = "submit" value = "message">  
 		</div>
 
-<footer id="main-footer">
-		<h2>Uni$ales</h2>
-
-		<section id="social-icons">
-			<a href="#" title="Our Facebook Page"><img class="icon" src="img/facebook.png"></a>
-			<a href="#" title="Our Twitter Page"><img class="icon" src="img/twitter.png"></a>
-		</section>
-
-		<section id="link-section">
-
-			<p id="footer-links">
-				<a href="#">About UniSales</a>
-				.
-				<a href="#">Terms of Use</a>
-				.
-				<a href="#">Privacy Policy</a>
-				.
-				<a href="#">Posting Policy</a>
-			</p>
-
-		</section>
-
-	</footer>
-		
+		<div id="footer"></div>
+		<!-- The Jquery scripts -->
+		<script src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+            crossorigin="anonymous"></script>
+		<script src="jscript/messaging.js"></script>
+			
 </body>
 </html>
 
