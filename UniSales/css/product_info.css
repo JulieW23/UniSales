@@ -1,11 +1,50 @@
-.pic_section {text-align: center;}
+.pic_section {align-items: center;}
 
 .prodct_title {
     width: auto;
     text-align: center;
 }
 
-.product_pic {width: 70%}
+.product_pic {
+    width: 70%;
+    align-self: center;
+    margin-top: 15px;
+}
+
+.thumbnail {
+    width: 4em;
+    align-self: center;
+}
+
+.thumbnail_pics {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    align-items: center;
+    text-align: center;
+    padding: 5px;
+    width: 95%;
+}
+
+.other_items {
+    align-items: center;
+    text-align: center;
+    padding: 5px;
+    width: 100%;
+}
+
+.other_thumbnail {
+    width: 2em;
+    padding: 5px;
+}
+
+figure {
+    clear: none;
+    display: inline-block;
+}
+
+.comment_form {
+    margin-top: 40px;
+}
 
 #bookmark_star {height: 1em;}
 
