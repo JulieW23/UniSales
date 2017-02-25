@@ -1,9 +1,9 @@
 .pic_section {align-items: center;}
 
-.prodct_title {
-    width: auto;
-    text-align: center;
-}
+.product_title {
+    width: 40%;
+    text-align: left ;
+    padding-right: 50px}
 
 .product_pic {
     width: 70%;
@@ -48,18 +48,16 @@ figure {
 
 #bookmark_star {height: 1em;}
 
-#product_title {
-    width: 40%;
-    align-items: left ;
-    padding-right: 50px}
+
 
 #interest {
     width: 40%;
-    align-items: right;
+    text-align: right;
     padding-left: 50px;
     padding-top: 40px}
 
 #price {font-weight: bold;}
+
 .poster_link {
     font-weight: bold;
     padding-top: 0px;
@@ -81,14 +79,15 @@ figure {
     font-size: 1em;
     padding-bottom: 0px;
     margin-bottom: 0px;}
+
 .user_comment {
     padding: 0px;
-    margin: 0px
+    margin: 0px;
     width: 50%;
     margin-top: 30px;}
 
 .date {
-    align: right;
+    text-align: right;
     padding-left: 30px}
 
 h3 {
