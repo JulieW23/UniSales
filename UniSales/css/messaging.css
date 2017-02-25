@@ -1,13 +1,19 @@
+.aname{
+	margin-left: 5% ;
+	font-style: italic;
+	font-size: 30px;
+}
+
 .msg{
 	margin-left: 5% ;
-	
+	border:8px solid gray;
 }
 
 .chat{
     height: 110px;
 	overflow:scroll;
 	float:left;
-	border:8px solid green;
+	border:8px solid gray;
 	
 	 position: relative;
     width: 110px; 
@@ -23,8 +29,9 @@
 }
 
 .friend{
+	margin-top: 2%;
 	margin-bottom: 5% ;
-	
+	border:8px solid gray;
 }
 @media only screen and (min-width: 680px) {
     /* For tablets: */
@@ -57,5 +64,6 @@
     .col-10 {width: 83.33%;}
     .col-11 {width: 91.66%;}
     .col-12 {width: 100%;}
-	.big{margin-left : 30%;}
+	.big{margin-left : 12%;
+		margin-right : 12%;}
 }
