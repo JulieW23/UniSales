@@ -16,6 +16,7 @@
             new_post = $('.main_picture_holder').append($(post));
         }
     });
+
     // More picture upload
     $('.sub_pic_button').on('click', function () {
         console.log("sub pic button clicked");
