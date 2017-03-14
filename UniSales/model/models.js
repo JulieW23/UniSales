@@ -1,6 +1,5 @@
 var mongoose = require('mongoose');
 var autoIncrement = require('mongoose-auto-increment');
-var encrypt = require('mongoose-encryption');
 
 var connection = mongoose.connect('mongodb://localhost/unisaleServer');
 autoIncrement.initialize(connection);
@@ -25,7 +24,7 @@ var UserSchema = new Schema(
     },
     password: {
       type: String,
-      default: ""
+      required: true
     },
     __v: { 
         type: Number, 
@@ -40,11 +39,7 @@ var UserSchema = new Schema(
   }
 );
 
-encryptionKey = 'CwBDwGUwoM5YzBmzwWPSI+KjBKvWHaablbrEiDYh43Q='
-signingKey = 'dLBm74RU4NW3e2i3QSifZDNXIXBd54yr7mZp0LKugVUa1X1UP9qoxoa3xfA7Ea4kdVL+JsPg9boGfREbPCb+kw=='
-
 UserSchema.plugin(autoIncrement.plugin, 'User');
-UserSchema.plugin(encrypt, { encryptionKey: encryptionKey, signingKey: signingKey, encryptedFields: ['password'] });
 // Doc for Mongoose Models: http://mongoosejs.com/docs/models
 module.exports = {
   User: mongoose.model('users', UserSchema)};
