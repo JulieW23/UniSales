@@ -1,10 +1,11 @@
 var express = require('express');
-var fs = require('fs');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var expressValidator = require('express-validator');
 var Models = require('./model/models');
+var bcrypt = require('bcrypt');
 var app = express();
+var SALT_WORK_FACTOR = 10;
 
 app.use(express.static(__dirname + '/'));
 
@@ -34,9 +35,12 @@ function postUser(req, res)
     var request = new Models.User({
         email: req.body.email,
         firstname: req.body.firstname,
-        firstname : req.body.firstname,
-        password: req.body.password,
+        firstname : req.body.firstname
     });
+
+    var salt = bcrypt.genSaltSync(10);
+    var hash = bcrypt.hashSync(req.body.password, salt);
+    request.password = hash;
 
     request.save(function (err) {
           if (err) {
@@ -52,6 +56,56 @@ function postUser(req, res)
       });
 }
 
+// Function for get a user
+function getUser(req, res) {
+    var id = req.query.id;
+    var email = req.query.email;
+    if(id)
+    {
+        findUserWithDoesntExistPossibility(res, {_id:id});
+    }
+    else if (email)
+    {
+        findUserWithDoesntExistPossibility(res, {email:email});
+    }
+    else
+    {
+        res.statusCode = 404;
+        return res.send({error: "Please provide an userid"});
+    }
+}
+
+function login(req, res) {
+  var email = req.body.email;
+  var password = req.body.password;
+
+  Models.User.findOne({email: email}, function(err, user) {
+        if (err)
+        {
+            throw err;
+        }
+        else if (!user)
+        {
+            console.log("Can't find the user");
+            res.statusCode = 404;
+            return res.send("Failed to find the user");
+        }
+        else
+        {
+          // test a matching password
+          var result = bcrypt.compareSync(password, user.password);
+          if (result) {
+              console.log("Password correct");
+              req.session.email = req.body.email;
+              console.log(req.session);
+              return res.send({success: "Login OK"});
+          } else {
+              console.log("Password wrong");
+              return res.send({error: "Login Failed"});
+          }
+        }
+  });
+}
 // Helper function for find user
 function findUserWithDoesntExistPossibility(res, query)
 {
@@ -75,6 +129,8 @@ function findUserWithDoesntExistPossibility(res, query)
 }
 // users
 app.post('/user', postUser);
+app.get('/user', getUser);
+app.post('/login', login);
 
 app.listen(process.env.PORT || 3000);
 console.log('Listening on port 3000');
