@@ -38,7 +38,9 @@ curl -H "Content-Type: application/json"   \
     -X DELETE http://localhost:3000/user/0/products
 echo ""
 
-read -p "Test to get the user products with userid=0"
+
+# This time we should fail to find the user's product since the product has been deleted.
+read -p "Test to get the user products with userid=0, (Should fail since it has just been deleted)"
 curl -H "Content-Type: application/json"   \
     -X GET http://localhost:3000/user/0/products
 echo ""
