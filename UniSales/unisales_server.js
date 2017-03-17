@@ -56,7 +56,7 @@ function postUser(req, res)
           else
           {
                 // Success: Send the updated user back
-                findUserWithDoesntExistPossibility(res, {email:req.body.email});
+                findUserWithDoesntExistPossibility(res, {email:req.body.email}, 0);
           }
       });
 }
@@ -67,11 +67,11 @@ function getUser(req, res) {
     var email = req.query.email;
     if(id)
     {
-        findUserWithDoesntExistPossibility(res, {_id:id});
+        findUserWithDoesntExistPossibility(res, {_id:id}, 1);
     }
     else if (email)
     {
-        findUserWithDoesntExistPossibility(res, {email:email});
+        findUserWithDoesntExistPossibility(res, {email:email}, 1);
     }
     else
     {
@@ -209,8 +209,12 @@ function findUserWithDoesntExistPossibility(res, query)
         }
         else
         {
-            console.log(JSON.stringify(users[0]));
-            return res.json(users[0]);
+            var result = {};
+            result.email = users[0].email;
+            result.firstname = users[0].firstname;
+            result.lastname = users[0].lastname;
+            console.log(JSON.stringify(result));
+            return res.json(result);
         }
     });
 }
