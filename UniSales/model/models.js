@@ -94,11 +94,14 @@ var ProductSchema = new Schema(
         type: Number, 
         required: true
     },
+    description: {
+      type: String,
+      requires: true    
+    },
      __v: { 
         type: Number, 
         select: false
     }
-
   },
   {
       _id: false

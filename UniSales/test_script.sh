@@ -48,28 +48,29 @@ echo ""
 
 read -p "Create a few products"
 curl -v   -H "Content-Type: application/json" \
-    -X POST -d '{"productname":"apple", "price": 5, "category":"Shirts"}'\
+    -X POST -d '{"productname":"apple", "price": 5, "category":"Shirts", "description":"Great tasting!"}'\
     http://localhost:3000/user/0/products
 echo ""
 
 
 curl -v   -H "Content-Type: application/json" \
-    -X POST -d '{"productname":"banana", "price": 8, "category":"Clothing"}'\
+    -X POST -d '{"productname":"banana", "price": 8, "category":"Clothing", "description":"nice and yellow"}'\
     http://localhost:3000/user/0/products
 echo ""
 
 curl -v   -H "Content-Type: application/json" \
-    -X POST -d '{"productname":"Best shirt", "price": 20, "category":"Shirts"}'\
+    -X POST -d '{"productname":"Best shirt", "price": 20, "category":"Shirts", "description":"Its comfy!"}'\
     http://localhost:3000/user/0/products
 echo ""
 
 curl -v   -H "Content-Type: application/json" \
-    -X POST -d '{"productname":"Pants", "price": 15, "category":"Clothing"}'\
+    -X POST -d '{"productname":"Pants", "price": 15, "category":"Clothing", "description":"YUGE"}'\
     http://localhost:3000/user/0/products
 echo ""
 
 
 ## Search for a few products
+read -p "Search few products"
 curl -v   -H "Content-Type: application/json" \
     -X GET -d '{"price": 15}'\
     http://localhost:3000/products
@@ -88,7 +89,7 @@ echo ""
 curl -v   -H "Content-Type: application/json" \
     -X GET -d '{"category":"Shirts", "price": 8}'\
     http://localhost:3000/products
-
+echo""
 
 
 read -p "Test to get the user products with userid=0"
