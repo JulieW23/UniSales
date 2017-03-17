@@ -1,4 +1,25 @@
 #!/bin/bash
+# read -p "Get all comments for product=1"
+# curl -H "Content-Type: application/json" \
+# 	-X -GET http://localhost:3000/comment/product/1
+# echo ""
+
+
+
+read -p "Create a category"
+curl -v   -H "Content-Type: application/json" \
+    -X POST -d '{"name":"Clothing"}'\
+    http://localhost:3000/category
+echo ""
+
+read -p "Create a subcategory"
+curl -v   -H "Content-Type: application/json" \
+    -X POST -d '{"name":"Shirts", "parent_category":"Clothing"}'\
+    http://localhost:3000/category
+echo ""
+
+
+
 read -p "Create a user"
 curl -v   -H "Content-Type: application/json" \
     -X POST -d '{"email":"newuser@hotmail.com", "password": "123"}'\
@@ -22,9 +43,12 @@ curl -H "Content-Type: application/json"   \
     http://localhost:3000/login   --cookie-jar user1.cookie
 echo ""
 
+
+
+
 read -p "Create a product"
 curl -v   -H "Content-Type: application/json" \
-    -X POST -d '{"productname":"apple", "price": 5}'\
+    -X POST -d '{"productname":"apple", "price": 5, "category":"Shirts"}'\
     http://localhost:3000/user/0/products
 echo ""
 
@@ -37,6 +61,7 @@ read -p "Test to delete one user products with userid=0"
 curl -H "Content-Type: application/json"   \
     -X DELETE http://localhost:3000/user/0/products
 echo ""
+
 
 
 # This time we should fail to find the user's product since the product has been deleted.
@@ -52,19 +77,3 @@ curl -v   -H "Content-Type: application/json" \
     http://localhost:3000/comment
 echo ""
 
-# read -p "Get all comments for product=1"
-# curl -H "Content-Type: application/json" \
-# 	-X -GET http://localhost:3000/comment/product/1
-# echo ""
-
-read -p "Create a category"
-curl -v   -H "Content-Type: application/json" \
-    -X POST -d '{"name":"Clothing"}'\
-    http://localhost:3000/category
-echo ""
-
-read -p "Create a subcategory"
-curl -v   -H "Content-Type: application/json" \
-    -X POST -d '{"name":"Shirts", "parent_category":"Clothing"}'\
-    http://localhost:3000/category
-echo ""

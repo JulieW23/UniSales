@@ -77,12 +77,15 @@ var ProductSchema = new Schema(
       type: String,
       default: ""
     },
-   
+
     price: {
       type: Number,
       required: true
     },
-    
+    category: {
+      type:String,
+      required: true  
+    },
      ownerid: { 
         type: Number, 
         required: true
@@ -91,6 +94,7 @@ var ProductSchema = new Schema(
         type: Number, 
         select: false
     }
+
   },
   {
       _id: false

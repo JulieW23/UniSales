@@ -147,6 +147,7 @@ function postProduct(req, res)
     var newproduct = new Models.Product({
         productname: req.body.productname,
         price: req.body.price,
+        category: req.body.category,
         ownerid : id
     });
 
