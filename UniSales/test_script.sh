@@ -10,11 +10,39 @@ curl -H "Content-Type: application/json"   \
     -X GET http://localhost:3000/user?id=0
 echo ""
 
+read -p "Test to change the user password with userid=0"
+curl -H "Content-Type: application/json"   \
+    -X PUT -d '{"password": "123456"}'  \
+     http://localhost:3000/user?uid=0
+echo ""
+
 read -p "Test: Login with the new user just created"
 curl -H "Content-Type: application/json"   \
-    -X POST -d '{"email":"newuser@hotmail.com", "password": "123"}'   \
+    -X POST -d '{"email":"newuser@hotmail.com", "password": "123456"}'   \
     http://localhost:3000/login   --cookie-jar user1.cookie
 echo ""
+
+read -p "Create a product"
+curl -v   -H "Content-Type: application/json" \
+    -X POST -d '{"productname":"apple", "price": 5}'\
+    http://localhost:3000/user/0/products
+echo ""
+
+read -p "Test to get the user products with userid=0"
+curl -H "Content-Type: application/json"   \
+    -X GET http://localhost:3000/user/0/products
+echo ""
+
+read -p "Test to delete one user products with userid=0"
+curl -H "Content-Type: application/json"   \
+    -X DELETE http://localhost:3000/user/0/products
+echo ""
+
+read -p "Test to get the user products with userid=0"
+curl -H "Content-Type: application/json"   \
+    -X GET http://localhost:3000/user/0/products
+echo ""
+
 
 read -p "Create a comment"
 curl -v   -H "Content-Type: application/json" \
