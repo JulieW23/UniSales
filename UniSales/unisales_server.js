@@ -225,13 +225,13 @@ function postComment(req, res)
         }
         else
         {
-            getComment(res, {title:req.body.title});
+            findComment(res, {title:req.body.title});
         }
 
     });
 }
 
-function getComment(res, query)
+function findComment(res, query)
 {
     Models.Comment.find(query, function(err, comments) {
         if (err)
@@ -252,6 +252,20 @@ function getComment(res, query)
     });
 }
 
+function getComment(req, res)
+{
+    var productid = req.query.productid
+    if(productid)
+    {
+        var query = {product: productid}
+        findComment(res, query);
+    }
+    else
+    {
+        res.statusCode = 404;
+        return res.send({error: "Please provide an productid"});
+    }
+}
 function postCategory(req, res)
 {
     console.log("Create Category");
@@ -347,7 +361,7 @@ app.get('/user/:uid/products', getProduct);
 app.delete('/user/:uid/products', deleteProduct);
 
 app.post('/comment', postComment);
-// app.get('/comment', getComment);
+app.get('/comment', getComment);
 
 app.post('/category', postCategory);
 
