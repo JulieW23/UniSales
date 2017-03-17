@@ -127,10 +127,101 @@ function findUserWithDoesntExistPossibility(res, query)
         }
     });
 }
+
+function postComment(req, res)
+{
+    console.log("Create Comment");
+    var request = new Models.Comment({
+        title: req.body.title,
+        message: req.body.message,
+        product: req.body.product
+    });
+    request.save(function (err) {
+        if (err) {
+            console.log(err);
+            res.statusCode = 403;
+            return res.send("Failed to create a comment");
+        }
+        else
+        {
+            getComment(res, {title:req.body.title});
+        }
+
+    });
+}
+
+function getComment(res, query)
+{
+    Models.Comment.find(query, function(err, comments) {
+        if (err)
+        {
+            throw err;
+        }
+        else if (!comments.length)
+        {
+            console.log("Can't find the comment(s)");
+            res.statusCode = 404;
+            return res.send("Failed to find the comment(s)");
+        }
+        else
+        {
+          console.log(JSON.stringify(comments));
+          return res.json(comments);
+        }
+    });
+}
+
+function postCategory(req, res)
+{
+    console.log("Create Category");
+    var request = new Models.Category({
+        name: req.body.name,
+        parent_category: req.body.parent_category
+    });
+    request.save(function (err) {
+        if (err) {
+            console.log(err);
+            res.statusCode = 403;
+            return res.send("Failed to create a category");
+        }
+        else
+        {
+            findCategoryWithDoesntExistPossibility(res, {name:req.body.name});
+        }
+
+    });
+}
+
+function findCategoryWithDoesntExistPossibility(res, query)
+{
+    Models.Category.find(query, function(err, categories) {
+        if (err)
+        {
+            throw err;
+        }
+        else if (!categories.length)
+        {
+            console.log("Can't find the category");
+            res.statusCode = 404;
+            return res.send("Failed to find the category");
+        }
+        else
+        {
+          console.log(JSON.stringify(categories[0]));
+          return res.json(categories[0]);
+        }
+    });
+}
+
 // users
 app.post('/user', postUser);
 app.get('/user', getUser);
 app.post('/login', login);
+
+app.post('/comment', postComment);
+app.get('/comment', getComment);
+
+app.post('/category', postCategory);
 
 app.listen(process.env.PORT || 3000);
 console.log('Listening on port 3000');

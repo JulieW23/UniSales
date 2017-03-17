@@ -39,7 +39,39 @@ var UserSchema = new Schema(
   }
 );
 
+var CommentSchema = new Schema (
+  {
+    title: {
+      type: String,
+      required: true,
+    },
+    message: {
+      type: String,
+      required: true
+    },
+    product: {
+      type: Number,
+      required: true
+    }
+  }
+);
+
+var CategorySchema = new Schema (
+  {
+    name: {
+      type: String,
+      required: true,
+      unique: true
+    },
+    parent_category: {
+      type: String
+    }
+  }
+);
+
 UserSchema.plugin(autoIncrement.plugin, 'User');
 // Doc for Mongoose Models: http://mongoosejs.com/docs/models
 module.exports = {
-  User: mongoose.model('users', UserSchema)};
+  User: mongoose.model('users', UserSchema),
+  Comment: mongoose.model('comments', CommentSchema),
+  Category: mongoose.model('categories', CategorySchema)};
