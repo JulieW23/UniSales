@@ -32,6 +32,11 @@ app.use(expressValidator());
 function postUser(req, res)
 {
     console.log("Create User");
+    if (!req.body.email || !req.body.password)
+    {
+        res.statusCode = 404;
+        return res.send("Email or password is missing");
+    }
     var request = new Models.User({
         email: req.body.email,
         firstname: req.body.firstname,
