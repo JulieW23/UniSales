@@ -160,14 +160,14 @@ function postProduct(req, res)
           }
           else
           {
-                // Success: Send the updated user back
+                // Success: Send the updated product back
                 findProduct(res, {ownerid : id});
           }
       });
 }
 
 function deleteProduct(req, res) {
-    // Delete menu
+    
     Models.Product.deleteOne({
       ownerid: parseInt(req.params.uid)
     }, function(err, result) {
@@ -178,8 +178,7 @@ function deleteProduct(req, res) {
           }
           else
           {
-                // Success: Send the updated user back
-                findProduct(res, {ownerid : parseInt(req.params.uid)});
+                return res.send("Delete successfully");
           }
       
 
