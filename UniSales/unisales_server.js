@@ -56,7 +56,7 @@ function postUser(req, res)
           else
           {
                 // Success: Send the updated user back
-                findUserWithDoesntExistPossibility(res, {email:req.body.email}, 0);
+                findUserWithDoesntExistPossibility(res, {email:req.body.email});
           }
       });
 }
@@ -67,11 +67,11 @@ function getUser(req, res) {
     var email = req.query.email;
     if(id)
     {
-        findUserWithDoesntExistPossibility(res, {_id:id}, 1);
+        findUserWithDoesntExistPossibility(res, {_id:id});
     }
     else if (email)
     {
-        findUserWithDoesntExistPossibility(res, {email:email}, 1);
+        findUserWithDoesntExistPossibility(res, {email:email});
     }
     else
     {
