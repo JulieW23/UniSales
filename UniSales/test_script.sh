@@ -49,23 +49,23 @@ echo ""
 read -p "Create a few products"
 curl -v   -H "Content-Type: application/json" \
     -X POST -d '{"productname":"apple", "price": 5, "category":"Shirts", "description":"Great tasting!"}'\
-    http://localhost:3000/user/0/products
+    http://localhost:3000/user/0/products --cookie user1.cookie
 echo ""
 
 
 curl -v   -H "Content-Type: application/json" \
     -X POST -d '{"productname":"banana", "price": 8, "category":"Clothing", "description":"nice and yellow"}'\
-    http://localhost:3000/user/0/products
+    http://localhost:3000/user/0/products  --cookie user1.cookie
 echo ""
 
 curl -v   -H "Content-Type: application/json" \
     -X POST -d '{"productname":"Best shirt", "price": 20, "category":"Shirts", "description":"Its comfy!"}'\
-    http://localhost:3000/user/0/products
+    http://localhost:3000/user/0/products  --cookie user1.cookie
 echo ""
 
 curl -v   -H "Content-Type: application/json" \
     -X POST -d '{"productname":"Pants", "price": 15, "category":"Clothing", "description":"YUGE"}'\
-    http://localhost:3000/user/0/products
+    http://localhost:3000/user/0/products  --cookie user1.cookie
 echo ""
 
 
