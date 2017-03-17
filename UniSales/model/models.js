@@ -69,9 +69,43 @@ var CategorySchema = new Schema (
   }
 );
 
+var ProductSchema = new Schema(
+  {
+    _id: Number,
+   
+    productname: {
+      type: String,
+      default: ""
+    },
+   
+    price: {
+      type: Number,
+      required: true
+    },
+    
+     ownerid: { 
+        type: Number, 
+        required: true
+    },
+     __v: { 
+        type: Number, 
+        select: false
+    }
+  },
+  {
+      _id: false
+  },
+  {
+    collection: 'product'
+  }
+);
+
+
 UserSchema.plugin(autoIncrement.plugin, 'User');
+ProductSchema.plugin(autoIncrement.plugin, 'Product');
 // Doc for Mongoose Models: http://mongoosejs.com/docs/models
 module.exports = {
   User: mongoose.model('users', UserSchema),
   Comment: mongoose.model('comments', CommentSchema),
-  Category: mongoose.model('categories', CategorySchema)};
+  Category: mongoose.model('categories', CategorySchema),
+  Product: mongoose.model('products', ProductSchema)};
