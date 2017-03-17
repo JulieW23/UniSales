@@ -34,7 +34,7 @@ echo ""
 read -p "Test to change the user password with userid=0"
 curl -H "Content-Type: application/json"   \
     -X PUT -d '{"password": "123456"}'  \
-     http://localhost:3000/user?uid=0
+     http://localhost:3000/user?uid=0 --cookie user1.cookie
 echo ""
 
 read -p "Test: Login with the new user just created"
@@ -43,10 +43,24 @@ curl -H "Content-Type: application/json"   \
     http://localhost:3000/login   --cookie-jar user1.cookie
 echo ""
 
+## Make a second user
+read -p "Create a user"
+curl -v   -H "Content-Type: application/json" \
+    -X POST -d '{"email":"newuser2@hotmail.com", "password": "123"}'\
+    http://localhost:3000/user
+echo ""
+
+
+#login 2nd user
+read -p "Test: Login with the 2nd user just created"
+curl -H "Content-Type: application/json"   \
+    -X POST -d '{"email":"newuser2@hotmail.com", "password": "123"}'   \
+    http://localhost:3000/login   --cookie-jar user2.cookie
+echo ""
 
 
 
-read -p "Create a few products"
+read -p "Create a few products as first user"
 curl -v   -H "Content-Type: application/json" \
     -X POST -d '{"productname":"apple", "price": 5, "category":"Shirts", "description":"Great tasting!"}'\
     http://localhost:3000/user/0/products --cookie user1.cookie
@@ -66,6 +80,43 @@ echo ""
 curl -v   -H "Content-Type: application/json" \
     -X POST -d '{"productname":"Pants", "price": 15, "category":"Clothing", "description":"YUGE"}'\
     http://localhost:3000/user/0/products  --cookie user1.cookie
+echo ""
+
+
+read -p "Create a few products as second user"
+curl -v   -H "Content-Type: application/json" \
+    -X POST -d '{"productname":"apple", "price": 5, "category":"Shirts", "description":"Great tasting!"}'\
+    http://localhost:3000/user/11/products --cookie user2.cookie
+echo ""
+
+
+curl -v   -H "Content-Type: application/json" \
+    -X POST -d '{"productname":"banana", "price": 8, "category":"Clothing", "description":"nice and yellow"}'\
+    http://localhost:3000/user/11/products  --cookie user2.cookie
+echo ""
+
+curl -v   -H "Content-Type: application/json" \
+    -X POST -d '{"productname":"Best shirt", "price": 20, "category":"Shirts", "description":"Its comfy!"}'\
+    http://localhost:3000/user/11/products  --cookie user2.cookie
+echo ""
+
+curl -v   -H "Content-Type: application/json" \
+    -X POST -d '{"productname":"Pants", "price": 15, "category":"Clothing", "description":"YUGE"}'\
+    http://localhost:3000/user/11/products  --cookie user2.cookie
+echo ""
+
+
+
+read -p "Create a product as user2 to user1 address"
+curl -v   -H "Content-Type: application/json" \
+    -X POST -d '{"productname":"Pants", "price": 15, "category":"Clothing", "description":"YUGE"}'\
+    http://localhost:3000/user/0/products  --cookie user2.cookie
+echo ""
+
+read -p "Create a product as user1 to user2 address"
+curl -v   -H "Content-Type: application/json" \
+    -X POST -d '{"productname":"Pants", "price": 15, "category":"Clothing", "description":"YUGE"}'\
+    http://localhost:3000/user/1/products  --cookie user1.cookie
 echo ""
 
 

@@ -84,6 +84,7 @@ function login(req, res) {
   var email = req.body.email;
   var password = req.body.password;
 
+
   Models.User.findOne({email: email}, function(err, user) {
         if (err)
         {
@@ -102,6 +103,7 @@ function login(req, res) {
           if (result) {
               console.log("Password correct");
               req.session.email = req.body.email;
+              req.session.uid = user._id;
               console.log(req.session);
               return res.send({success: "Login OK"});
           } else {
@@ -116,6 +118,8 @@ function login(req, res) {
 // get product
 function getProduct(req, res) {
     var id = req.params.uid;
+
+
     if(id)
     {
 	
@@ -131,6 +135,9 @@ function getProduct(req, res) {
 // change password
 function changePass(req, res) {
     var id = req.query.uid;
+
+
+
     var salt = bcrypt.genSaltSync(10);
     var hash = bcrypt.hashSync(req.body.password, salt);
     if(id)
@@ -150,30 +157,31 @@ function postProduct(req, res)
 {
     console.log("Create Product");
 
-    if (req.session.email) {
     var id = req.params.uid;
-    var newproduct = new Models.Product({
-        productname: req.body.productname,
-        price: req.body.price,
-        category: req.body.category,
-        description: req.body.description,
-        ownerid : id
-    });
+    console.log("uid: " + req.session.uid + " id: " + id)
+    if (req.session.uid == id) {
+        var newproduct = new Models.Product({
+            productname: req.body.productname,
+            price: req.body.price,
+            category: req.body.category,
+            description: req.body.description,
+            ownerid : id
+        });
 
-   
+       
 
-    newproduct.save(function (err) {
-          if (err) {
-            console.log(err);
-            res.statusCode = 403;
-            return res.send("Failed to create a product");
-          }
-          else
-          {
-                // Success: Send the updated product back
-                findProduct(res, {ownerid : id});
-          }
-      });
+        newproduct.save(function (err) {
+              if (err) {
+                console.log(err);
+                res.statusCode = 403;
+                return res.send("Failed to create a product");
+              }
+              else
+              {
+                    // Success: Send the updated product back
+                    findProduct(res, {ownerid : id});
+              }
+          });
     } else {
         console.log("User trying to post to wrong account");
         res.statusCode=400;
