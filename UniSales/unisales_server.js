@@ -35,7 +35,7 @@ function postUser(req, res)
     var request = new Models.User({
         email: req.body.email,
         firstname: req.body.firstname,
-        firstname : req.body.firstname
+        lastname : req.body.lastname
     });
 
     var salt = bcrypt.genSaltSync(10);
