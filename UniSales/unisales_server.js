@@ -219,7 +219,7 @@ app.get('/user', getUser);
 app.post('/login', login);
 
 app.post('/comment', postComment);
-app.get('/comment', getComment);
+// app.get('/comment', getComment);
 
 app.post('/category', postCategory);
 

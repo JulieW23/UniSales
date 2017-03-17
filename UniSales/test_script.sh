@@ -22,10 +22,10 @@ curl -v   -H "Content-Type: application/json" \
     http://localhost:3000/comment
 echo ""
 
-read -p "Get all comments for product=1"
-curl -H "Content-Type: application/json" \
-	-X -GET http://localhost:3000/comment/product/1
-echo ""
+# read -p "Get all comments for product=1"
+# curl -H "Content-Type: application/json" \
+# 	-X -GET http://localhost:3000/comment/product/1
+# echo ""
 
 read -p "Create a category"
 curl -v   -H "Content-Type: application/json" \
