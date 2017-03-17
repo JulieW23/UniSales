@@ -331,7 +331,7 @@ function findProduct(res, query)
         {
             console.log("Can't find the products");
             res.statusCode = 404;
-            return res.send("Failed to find the products of that user");
+            return res.send("Failed to find the products matching: " + query);
         }
         else
         {
@@ -366,7 +366,7 @@ function changeUserPassword(res, query, newpass)
 // get product
 function searchProduct(req, res) {
     
-        console.log(req.body);
+        console.log("Searching for products matching: " + req.body);
         findProduct(res, req.body);
 }
 
