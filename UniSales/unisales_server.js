@@ -149,6 +149,8 @@ function changePass(req, res) {
 function postProduct(req, res)
 {
     console.log("Create Product");
+
+    if (req.session.email) {
     var id = req.params.uid;
     var newproduct = new Models.Product({
         productname: req.body.productname,
@@ -172,6 +174,11 @@ function postProduct(req, res)
                 findProduct(res, {ownerid : id});
           }
       });
+    } else {
+        console.log("User trying to post to wrong account");
+        res.statusCode=400;
+        return res.send({error:"Wrong login"});
+    }
 }
 
 function deleteProduct(req, res) {
@@ -371,6 +378,17 @@ function searchProduct(req, res) {
 }
 
 
+function updateProduct(req,res) {
+    console.log("Updating product")
+}
+
+function delProd(req,res) {
+    console.log("Delete product")
+}
+
+
+
+
 // users
 app.post('/user', postUser);
 app.get('/user', getUser);
@@ -387,6 +405,8 @@ app.get('/comment', getComment);
 app.post('/category', postCategory);
 
 app.get('/products', searchProduct);
+app.put('/products/:pid', updateProduct);
+app.delete('/products/:pid', delProd);
 
 app.listen(process.env.PORT || 3000);
 console.log('Listening on port 3000');
