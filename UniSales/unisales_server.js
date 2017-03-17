@@ -101,6 +101,7 @@ function login(req, res) {
               return res.send({success: "Login OK"});
           } else {
               console.log("Password wrong");
+              res.statusCode = 401;
               return res.send({error: "Login Failed"});
           }
         }
