@@ -211,8 +211,12 @@ function findUserWithDoesntExistPossibility(res, query)
         }
         else
         {
-            console.log(JSON.stringify(users[0]));
-            return res.json(users[0]);
+            var result = {};
+            result.email = users[0].email;
+            result.firstname = users[0].firstname;
+            result.lastname = users[0].lastname;
+            console.log(JSON.stringify(result));
+            return res.json(result);
         }
     });
 }
