@@ -357,6 +357,15 @@ function changeUserPassword(res, query, newpass)
     });
 }
 
+
+// get product
+function searchProduct(req, res) {
+    
+        console.log(req.body);
+        findProduct(res, req.body);
+}
+
+
 // users
 app.post('/user', postUser);
 app.get('/user', getUser);
@@ -371,6 +380,8 @@ app.post('/comment', postComment);
 app.get('/comment', getComment);
 
 app.post('/category', postCategory);
+
+app.get('/products', searchProduct);
 
 app.listen(process.env.PORT || 3000);
 console.log('Listening on port 3000');

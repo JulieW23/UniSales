@@ -46,11 +46,50 @@ echo ""
 
 
 
-read -p "Create a product"
+read -p "Create a few products"
 curl -v   -H "Content-Type: application/json" \
     -X POST -d '{"productname":"apple", "price": 5, "category":"Shirts"}'\
     http://localhost:3000/user/0/products
 echo ""
+
+
+curl -v   -H "Content-Type: application/json" \
+    -X POST -d '{"productname":"banana", "price": 8, "category":"Clothing"}'\
+    http://localhost:3000/user/0/products
+echo ""
+
+curl -v   -H "Content-Type: application/json" \
+    -X POST -d '{"productname":"Best shirt", "price": 20, "category":"Shirts"}'\
+    http://localhost:3000/user/0/products
+echo ""
+
+curl -v   -H "Content-Type: application/json" \
+    -X POST -d '{"productname":"Pants", "price": 15, "category":"Clothing"}'\
+    http://localhost:3000/user/0/products
+echo ""
+
+
+## Search for a few products
+curl -v   -H "Content-Type: application/json" \
+    -X GET -d '{"price": 15}'\
+    http://localhost:3000/products
+echo ""
+
+curl -v   -H "Content-Type: application/json" \
+    -X GET -d '{"price": 8, "category":"Clothing"}'\
+    http://localhost:3000/products
+echo ""
+
+curl -v   -H "Content-Type: application/json" \
+    -X GET -d '{"category":"Clothing"}'\
+    http://localhost:3000/products
+echo ""
+
+curl -v   -H "Content-Type: application/json" \
+    -X GET -d '{"category":"Shirts", "price": 8}'\
+    http://localhost:3000/products
+
+
 
 read -p "Test to get the user products with userid=0"
 curl -H "Content-Type: application/json"   \
