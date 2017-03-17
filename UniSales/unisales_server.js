@@ -106,6 +106,88 @@ function login(req, res) {
         }
   });
 }
+
+// get product
+function getProduct(req, res) {
+    var id = req.params.uid;
+    if(id)
+    {
+	
+        findProduct(res, {ownerid:id});
+    }
+  
+    else
+    {
+        res.statusCode = 404;
+        return res.send({error: "Please provide an userid"});
+    }
+}
+// change password
+function changePass(req, res) {
+    var id = req.query.uid;
+    var salt = bcrypt.genSaltSync(10);
+    var hash = bcrypt.hashSync(req.body.password, salt);
+    if(id)
+    {
+        changeUserPassword(res, {_id:id}, hash);
+    }
+   
+    else
+    {
+        res.statusCode = 404;
+        return res.send({error: "Please provide an userid"});
+    }
+}
+
+// post a product
+function postProduct(req, res)
+{
+    console.log("Create Product");
+    var id = req.params.uid;
+    var newproduct = new Models.Product({
+        productname: req.body.productname,
+        price: req.body.price,
+        ownerid : id
+    });
+
+   
+
+    newproduct.save(function (err) {
+          if (err) {
+            console.log(err);
+            res.statusCode = 403;
+            return res.send("Failed to create a product");
+          }
+          else
+          {
+                // Success: Send the updated user back
+                findProduct(res, {ownerid : id});
+          }
+      });
+}
+
+function deleteProduct(req, res) {
+    // Delete menu
+    Models.Product.deleteOne({
+      ownerid: parseInt(req.params.uid)
+    }, function(err, result) {
+	if (err) {
+            console.log(err);
+            res.statusCode = 403;
+            return res.send("Failed to delete a product");
+          }
+          else
+          {
+                // Success: Send the updated user back
+                findProduct(res, {ownerid : parseInt(req.params.uid)});
+          }
+      
+
+
+
+    });
+}
+
 // Helper function for find user
 function findUserWithDoesntExistPossibility(res, query)
 {
@@ -213,10 +295,57 @@ function findCategoryWithDoesntExistPossibility(res, query)
     });
 }
 
+function findProduct(res, query)
+{
+    Models.Product.find(query, function(err, products) {
+        if (err)
+        {
+            throw err;
+        }
+        else if (!products.length)
+        {
+            console.log("Can't find the products");
+            res.statusCode = 404;
+            return res.send("Failed to find the products of that user");
+        }
+        else
+        {
+            console.log(JSON.stringify(products));
+            return res.json(products);
+        }
+    });
+}
+
+function changeUserPassword(res, query, newpass)
+{
+    Models.User.update(query, { $set: { password : newpass }}, function(err, result) {
+        if (err)
+        {
+            throw err;
+        }
+        else if (!result)
+        {
+            console.log("Can't find the user");
+            res.statusCode = 404;
+            return res.send("Failed to find the user");
+        }
+        else
+        {
+            console.log(JSON.stringify(result));
+            return res.json("password changed successfully!");
+        }
+    });
+}
+
 // users
 app.post('/user', postUser);
 app.get('/user', getUser);
 app.post('/login', login);
+
+app.put('/user', changePass);
+app.post('/user/:uid/products', postProduct);
+app.get('/user/:uid/products', getProduct);
+app.delete('/user/:uid/products', deleteProduct);
 
 app.post('/comment', postComment);
 // app.get('/comment', getComment);
