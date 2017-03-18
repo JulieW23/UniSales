@@ -1,11 +1,4 @@
 #!/bin/bash
-# read -p "Get all comments for product=1"
-# curl -H "Content-Type: application/json" \
-# 	-X -GET http://localhost:3000/comment/product/1
-# echo ""
-
-
-
 read -p "Create a category"
 curl -v   -H "Content-Type: application/json" \
     -X POST -d '{"name":"Clothing"}'\
@@ -160,14 +153,14 @@ read -p "Test to update one products with pid=0"
 curl -v   -H "Content-Type: application/json" \
     -X PUT -d '{"productname":"NEW NAME"}'\
     http://localhost:3000/products/0 --cookie user1.cookie
-
+echo ""
 
 ##Delete a product
 read -p "Test to delete one products with pid=0"
 curl -v   -H "Content-Type: application/json" \
     -X DELETE -d ''\
     http://localhost:3000/products/0
-
+echo ""
 
 
 # This time we should fail to find the user's product since the product has been deleted.
@@ -181,5 +174,11 @@ read -p "Create a comment"
 curl -v   -H "Content-Type: application/json" \
     -X POST -d '{"title":"hello world", "message": "testing comment", "product": 1}'\
     http://localhost:3000/comment
+echo ""
+
+# Get all comment for product 1
+read -p "Get all comments for product=1"
+curl -H "Content-Type: application/json" \
+	-X GET http://localhost:3000/comment?productid=1
 echo ""
 
