@@ -28,7 +28,7 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 app.use(expressValidator());
 
 
-// Functions
+// Function for post user
 function postUser(req, res)
 {
     console.log("Create User");
@@ -80,11 +80,10 @@ function getUser(req, res) {
     }
 }
 
+//login function
 function login(req, res) {
   var email = req.body.email;
   var password = req.body.password;
-
-
   Models.User.findOne({email: email}, function(err, user) {
         if (err)
         {
@@ -92,7 +91,7 @@ function login(req, res) {
         }
         else if (!user)
         {
-            console.log("Can't find the user");
+            console.log("Failed to find the user");
             res.statusCode = 404;
             return res.send("Failed to find the user");
         }
@@ -118,26 +117,21 @@ function login(req, res) {
 // get product
 function getProduct(req, res) {
     var id = req.params.uid;
-
-
     if(id)
     {
 	
         findProduct(res, {ownerid:id});
     }
-  
     else
     {
         res.statusCode = 404;
         return res.send({error: "Please provide an userid"});
     }
 }
+
 // change password
 function changePass(req, res) {
     var id = req.query.uid;
-
-
-
     var salt = bcrypt.genSaltSync(10);
     var hash = bcrypt.hashSync(req.body.password, salt);
     if(id)
@@ -167,9 +161,6 @@ function postProduct(req, res)
             description: req.body.description,
             ownerid : id
         });
-
-       
-
         newproduct.save(function (err) {
               if (err) {
                 console.log(err);
@@ -189,8 +180,8 @@ function postProduct(req, res)
     }
 }
 
+// delete a product
 function deleteProduct(req, res) {
-    
     Models.Product.deleteOne({
       ownerid: parseInt(req.params.uid)
     }, function(err, result) {
@@ -203,10 +194,6 @@ function deleteProduct(req, res) {
           {
                 return res.send("Delete successfully");
           }
-      
-
-
-
     });
 }
 
@@ -236,6 +223,7 @@ function findUserWithDoesntExistPossibility(res, query)
     });
 }
 
+//post comment function
 function postComment(req, res)
 {
     console.log("Create Comment");
@@ -258,6 +246,7 @@ function postComment(req, res)
     });
 }
 
+//find comment function
 function findComment(res, query)
 {
     Models.Comment.find(query, function(err, comments) {
@@ -279,6 +268,7 @@ function findComment(res, query)
     });
 }
 
+// get comment function
 function getComment(req, res)
 {
     var productid = req.query.productid
@@ -293,6 +283,8 @@ function getComment(req, res)
         return res.send({error: "Please provide an productid"});
     }
 }
+
+// post category function
 function postCategory(req, res)
 {
     console.log("Create Category");
@@ -314,6 +306,8 @@ function postCategory(req, res)
     });
 }
 
+//helper function for finding a user with the possibility 
+//such that the user may not exists
 function findCategoryWithDoesntExistPossibility(res, query)
 {
     Models.Category.find(query, function(err, categories) {
@@ -335,6 +329,7 @@ function findCategoryWithDoesntExistPossibility(res, query)
     });
 }
 
+//function for find a product
 function findProduct(res, query)
 {
     Models.Product.find(query, function(err, products) {
@@ -356,6 +351,7 @@ function findProduct(res, query)
     });
 }
 
+// function for change password
 function changeUserPassword(res, query, newpass)
 {
     Models.User.update(query, { $set: { password : newpass }}, function(err, result) {
@@ -363,7 +359,7 @@ function changeUserPassword(res, query, newpass)
         {
             throw err;
         }
-        else if (!result)
+        else if (result.n === 0)
         {
             console.log("Can't find the user");
             res.statusCode = 404;
@@ -377,7 +373,6 @@ function changeUserPassword(res, query, newpass)
     });
 }
 
-
 // get product
 function searchProduct(req, res) {
     
@@ -385,7 +380,7 @@ function searchProduct(req, res) {
         findProduct(res, req.body);
 }
 
-
+// update a current existing product
 function updateProduct(req,res) {
     var pid = req.params.pid;
     console.log("Updating product: " + pid);
@@ -410,10 +405,9 @@ function updateProduct(req,res) {
         res.statusCode = 404;
         return res.send({error: "Please provide an product id"});
     }
-
-
 }
 
+// delete product function
 function delProd(req,res) {
     var pid = req.params.pid;
     console.log("Delete product: "+ pid);
@@ -429,17 +423,11 @@ function delProd(req,res) {
         {
             return res.send("Delete successfully");
         }
-        
-
     });
-
-
 }
 
 
-
-
-// users
+// Endpoint setup
 app.post('/user', postUser);
 app.get('/user', getUser);
 app.post('/login', login);
