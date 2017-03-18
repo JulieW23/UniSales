@@ -387,11 +387,53 @@ function searchProduct(req, res) {
 
 
 function updateProduct(req,res) {
-    console.log("Updating product")
+    var pid = req.params.pid;
+    console.log("Updating product: " + pid);
+
+    if(pid)
+    {
+        var query = {_id : pid}
+        Models.Product.update(query, req.body, function(err, result){
+            if (err) {throw err;}
+            else if (!result) {
+                console.log("Can't find product");
+                res.statusCode=404;
+                return res.send("Failed to find product");
+            } else {
+                console.log(JSON.stringify(result));
+                return res.json("Product updated successfully");
+            }
+        });
+    } 
+    else
+    {
+        res.statusCode = 404;
+        return res.send({error: "Please provide an product id"});
+    }
+
+
 }
 
 function delProd(req,res) {
-    console.log("Delete product")
+    var pid = req.params.pid;
+    console.log("Delete product: "+ pid);
+
+    Models.Product.deleteOne({_id: pid}, function(err, result) {
+
+        if (err) {
+            console.log(err);
+            res.statusCode = 403;
+            return res.send("Failed to delete a product");
+        }
+        else
+        {
+            return res.send("Delete successfully");
+        }
+        
+
+    });
+
+
 }
 
 

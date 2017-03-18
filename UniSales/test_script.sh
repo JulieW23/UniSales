@@ -155,6 +155,21 @@ echo ""
 
 
 
+##Update a product
+read -p "Test to update one products with pid=0"
+curl -v   -H "Content-Type: application/json" \
+    -X PUT -d '{"productname":"NEW NAME"}'\
+    http://localhost:3000/products/0 --cookie user1.cookie
+
+
+##Delete a product
+read -p "Test to delete one products with pid=0"
+curl -v   -H "Content-Type: application/json" \
+    -X DELETE -d ''\
+    http://localhost:3000/products/0
+
+
+
 # This time we should fail to find the user's product since the product has been deleted.
 read -p "Test to get the user products with userid=0, (Should fail since it has just been deleted)"
 curl -H "Content-Type: application/json"   \
