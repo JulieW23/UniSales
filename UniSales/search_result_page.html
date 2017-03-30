@@ -12,67 +12,30 @@
             <section class="search_selection">
                 <h1> Advanced Search </h1>
                 <div class="option_price_range">
-                    <h3> Price Range </h3>
+                    <!--<h3> Price Range </h3>
                     <input class="price_range" type="text" placeholder="From">
-                    <input class="price_range" type="text" placeholder="To">
-                    <div class="search_button_class">
-                        <button type="submit" class="search_button">Search</button>
-                    </div>
+                    <input class="price_range" type="text" placeholder="To">-->
+                    <h3> Price </h3>
+                    <input id="search_result_page_price" class="price_range" type="text" placeholder="Price">
                 </div>
 
                 <div class="option_1">
-                    <h3> Option 1 </h3>
-                    <form method="post">
-                        <select name="Option 1">
-                            <option value="sub option1">sub_option 1</option>
-                            <option value="sub option2">sub_option 2</option>
-                            <option value="sub option3">sub_option 3</option>
-                            <option value="sub option4">sub_option 4</option>
-                        </select>
-                    </form>
+                    <h3> Category </h3>
+
+                    <input id="search_result_page_category" class="price_range" type="text" placeholder="Category">
                 </div>
 
                 <div class="option_2">
-                    <h3> Option 2 </h3>
-                    <form method="post">
-                        <select name="Option 2">
-                            <option value="sub option1">sub_option 1</option>
-                            <option value="sub option2">sub_option 2</option>
-                            <option value="sub option3">sub_option 3</option>
-                            <option value="sub option4">sub_option 4</option>
-                        </select>
-                    </form>
+                    <h3> Product Name </h3>
+                    <input id="search_result_page_product_name" class="price_range" type="text" placeholder="Product name">
                 </div>
 
-                <div class="option_3">
-                    <h3> Option 3 </h3>
-                    <form method="post">
-                        <select name="Option 3">
-                            <option value="sub option1">sub_option 1</option>
-                            <option value="sub option2">sub_option 2</option>
-                            <option value="sub option3">sub_option 3</option>
-                            <option value="sub option4">sub_option 4</option>
-                        </select>
-                    </form>
+                <div class="search_button_class">
+                        <button id="search_result_page_search_button" type="submit" class="search_button">Search</button>
                 </div>
             </section>
 
-            <div class="search_box">
-                <div class="search_result">
-                    <img src="img/fake_item.png" alt="item phto" />
-                </div>
-                <div class="search_result">
-                    <img src="img/fake_item.png" alt="item phto" />
-                </div>
-                <div class="search_result">
-                    <img src="img/fake_item.png" alt="item phto" />
-                </div>
-                <div class="search_result">
-                    <img src="img/fake_item.png" alt="item phto" />
-                </div>
-                <div class="search_result">
-                    <img src="img/fake_item.png" alt="item phto" />
-                </div>
+            <div id="search_box" class="search_box">
             </div>
         </div>
         <div id="footer"></div>

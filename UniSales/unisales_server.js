@@ -376,7 +376,7 @@ function changeUserPassword(res, query, newpass)
 // get product
 function searchProduct(req, res) {
     
-        console.log("Searching for products matching: " + req.body);
+        console.log("Searching for products matching: " + JSON.stringify(req.body));
         findProduct(res, req.body);
 }
 
