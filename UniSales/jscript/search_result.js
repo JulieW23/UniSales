@@ -5,26 +5,32 @@
     // Update the user
     $("#search_result_page_search_button").click(function () {
         console.log("Called search_result_page_search_button");
-        var price = $("#search_result_page_price").val();
-        var category = $("#search_result_page_category").val();
-        var name = $("#search_result_page_product_name").val();
+        var query = {};
+        if ($("#search_result_page_price").val() != "")
+        {
+            query.price = $("#search_result_page_price").val();
+        }
+        if ($("#search_result_page_category").val() != "")
+        {
+            query.category = $("#search_result_page_category").val();
+        }
+        if ($("#search_result_page_product_name").val() != "")
+        {
+            query.productname = $("#search_result_page_product_name").val();
+        }        
         $("#search_result_page_price").val("");
         $("#search_result_page_category").val("");
         $("#search_result_page_product_name").val("");
-        searchProduct(price, category, name);
+        searchProduct(query);
     });  
 
-    function searchProduct(price, category, name) {
+    function searchProduct(query) {
         $.ajax({
             url: "/products",
-            type: "GET",
+            type: "POST",
             dataType: "json",
             contentType: "application/json; charset=utf-8",
-            data: JSON.stringify({
-                "price": price,
-                "category": category,
-                "productname": name
-            }),
+            data: JSON.stringify(query),
             success: function (response) {
                 console.log("Successfully search products")
                 console.log(JSON.stringify(response));
