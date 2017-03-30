@@ -116,22 +116,22 @@ echo ""
 ## Search for a few products
 read -p "Search few products"
 curl -v   -H "Content-Type: application/json" \
-    -X GET -d '{"price": 15}'\
+    -X POST -d '{"price": 15}'\
     http://localhost:3000/products
 echo ""
 
 curl -v   -H "Content-Type: application/json" \
-    -X GET -d '{"price": 8, "category":"Clothing"}'\
+    -X POST -d '{"price": 8, "category":"Clothing"}'\
     http://localhost:3000/products
 echo ""
 
 curl -v   -H "Content-Type: application/json" \
-    -X GET -d '{"category":"Clothing"}'\
+    -X POST -d '{"category":"Clothing"}'\
     http://localhost:3000/products
 echo ""
 
 curl -v   -H "Content-Type: application/json" \
-    -X GET -d '{"category":"Shirts", "price": 8}'\
+    -X POST -d '{"category":"Shirts", "price": 8}'\
     http://localhost:3000/products
 echo""
 

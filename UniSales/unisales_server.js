@@ -442,7 +442,7 @@ app.get('/comment', getComment);
 
 app.post('/category', postCategory);
 
-app.get('/products', searchProduct);
+app.post('/products', searchProduct);
 app.put('/products/:pid', updateProduct);
 app.delete('/products/:pid', delProd);
 
